@@ -13,6 +13,7 @@ class cidadaoController extends Controller
     public function index()
     {
         //
+        $d=0;
     }
 
     /**

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\cidadao;
 
 use App\Http\Controllers\Controller;
+use App\Models\Cidade;
+use App\Models\Provincium;
 use Illuminate\Http\Request;
 
 class cidadaoController extends Controller
@@ -22,7 +24,12 @@ class cidadaoController extends Controller
     public function create()
     {
         //
-        
+        $provincia = Provincium::all();
+        $cidade = Cidade::all();
+        $titulo = "Cidadão";
+        $subtitulo = "create";
+
+        return view('pages.cidadao.create_cidadao',compact('provincia','cidade','titulo','subtitulo'));
     }
 
     /**

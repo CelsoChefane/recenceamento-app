@@ -17,6 +17,9 @@ Route::middleware([
     'verified',
 ])->group(function () {
 
+    Route::get('/', function () {
+        return view('layouts.admin');
+    });
 
     Route::get('/dashboard', function () {
         return view('dashboard');

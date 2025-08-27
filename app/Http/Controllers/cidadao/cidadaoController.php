@@ -24,12 +24,12 @@ class cidadaoController extends Controller
     public function create()
     {
         //
-        $provincia = Provincium::all();
-        $cidade = Cidade::all();
+        $provincias = Provincium::all();
+        $cidades = Cidade::all();
         $titulo = "Cidadão";
         $subtitulo = "create";
 
-        return view('pages.cidadao.create_cidadao',compact('provincia','cidade','titulo','subtitulo'));
+        return view('pages.cidadao.create_cidadao',compact('provincias','cidades','titulo','subtitulo'));
     }
 
     /**

@@ -22,6 +22,7 @@ class cidadaoController extends Controller
     public function create()
     {
         //
+        
     }
 
     /**

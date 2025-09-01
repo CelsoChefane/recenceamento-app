@@ -22,6 +22,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property string|null $deleted_at
+ * 
+ * @property Cidadao $cidadao
+ * @property UnidadeMilitar $unidade_militar
  *
  * @package App\Models
  */
@@ -44,4 +47,14 @@ class Alistamento extends Model
 		'situacao',
 		'data_alistamento'
 	];
+
+	public function cidadao()
+	{
+		return $this->belongsTo(Cidadao::class);
+	}
+
+	public function unidade_militar()
+	{
+		return $this->belongsTo(UnidadeMilitar::class);
+	}
 }

@@ -20,8 +20,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string|null $sexo
  * @property Carbon|null $data_nascimento
  * @property string|null $estado_civil
- * @property string $tipo_doc
- * @property string $num_doc
+ * @property string|null $tipo_doc
+ * @property string|null $num_doc
  * @property string|null $telefone
  * @property string|null $email
  * @property string|null $endereco
@@ -32,11 +32,14 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property int|null $destrito_id
  * @property int|null $documento_id
  * @property int|null $cidade_id
+ * @property string|null $NIM
+ * @property string|null $num_registo
  * 
  * @property Cidade|null $cidade
  * @property Destrito|null $destrito
  * @property Documento|null $documento
  * @property Provincium $provincium
+ * @property Collection|Alistamento[] $alistamentos
  * @property Collection|NivelAcademico[] $nivel_academicos
  * @property Collection|ExameMedico[] $exame_medicos
  *
@@ -69,7 +72,9 @@ class Cidadao extends Model
 		'provincia_id',
 		'destrito_id',
 		'documento_id',
-		'cidade_id'
+		'cidade_id',
+		'NIM',
+		'num_registo'
 	];
 
 	public function cidade()
@@ -90,6 +95,11 @@ class Cidadao extends Model
 	public function provincium()
 	{
 		return $this->belongsTo(Provincium::class, 'provincia_id');
+	}
+
+	public function alistamentos()
+	{
+		return $this->hasMany(Alistamento::class);
 	}
 
 	public function nivel_academicos()

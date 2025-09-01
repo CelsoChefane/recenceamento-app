@@ -7,6 +7,7 @@
 namespace App\Models;
 
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -26,6 +27,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property Cidade|null $cidade
  * @property Destrito|null $destrito
  * @property Provincium|null $provincium
+ * @property Collection|Alistamento[] $alistamentos
  *
  * @package App\Models
  */
@@ -61,5 +63,10 @@ class UnidadeMilitar extends Model
 	public function provincium()
 	{
 		return $this->belongsTo(Provincium::class, 'provincia_id');
+	}
+
+	public function alistamentos()
+	{
+		return $this->hasMany(Alistamento::class);
 	}
 }

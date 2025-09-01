@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('alistamento', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('cidadao_id')->index('fk_cidadao_has_unidade_militar_cidadao1_idx');
-            $table->integer('unidade_militar_id')->index('fk_cidadao_has_unidade_militar_unidade_militar1_idx');
+            $table->unsignedInteger('unidade_militar_id')->index('fk_cidadao_has_unidade_militar_unidade_militar1_idx');
             $table->integer('ano')->nullable();
             $table->string('situacao', 45)->nullable();
             $table->date('data_alistamento')->nullable();

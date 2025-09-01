@@ -26,6 +26,16 @@
 <!--end::App Wrapper-->
 <!--begin::Script-->
 <!--begin::Third Party Plugin(OverlayScrollbars)-->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.datatables.net/2.3.3/js/dataTables.js"></script>
+<script src="https://cdn.datatables.net/2.3.3/js/dataTables.bootstrap5.js"></script>
+
+
+
+
+
 <script
   src="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.11.0/browser/overlayscrollbars.browser.es6.min.js"
   crossorigin="anonymous"
@@ -71,20 +81,26 @@
   crossorigin="anonymous"
 ></script>
 <!-- sortablejs -->
+import Sortable from 'sortablejs';
 <script>
-  new Sortable(document.querySelector('.connectedSortable'), {
-    group: 'shared',
-    handle: '.card-header',
-  });
 
-  const cardHeaders = document.querySelectorAll('.connectedSortable .card-header');
-  cardHeaders.forEach((cardHeader) => {
-    cardHeader.style.cursor = 'move';
-  });
+    // new Sortable(document.querySelector('.connectedSortable'), {
+    //     group: 'shared',
+    //     handle: '.card-header',
+    // });
+
+    const cardHeaders = document.querySelectorAll('.connectedSortable .card-header');
+    cardHeaders.forEach((cardHeader) => {
+        cardHeader.style.cursor = 'move';
+    });
 </script>
 <!-- apexcharts -->
 <script
   src="https://cdn.jsdelivr.net/npm/apexcharts@3.37.1/dist/apexcharts.min.js"
   integrity="sha256-+vh8GkaU7C9/wbSLIcwq82tQ2wTf44aOHA8HlBMwRI8="
   crossorigin="anonymous"
-></script>
+>
+
+
+</script>
+

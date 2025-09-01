@@ -11,10 +11,10 @@
     </div>
     <!--end::Header-->
     <!--begin::Form-->
-    <form class="needs-validation" novalidate>
+    <form method="" action="{{ URL::route('cidadao.store') }}">
         <!--begin::Body-->
         <div class="card-body">
-            <form method="" action="{{ URL::route('cidadao.store') }}">
+
                 <!--begin::Row-->
                 <div class="row g-3">
                     <!--begin::Col-->
@@ -47,7 +47,7 @@
                     <!--begin::Col-->
                     <div class="col-md-6">
                         <label for="validationCustom03" class="form-label">Provicia</label>
-                        <select class="form-select" id="validationCustom04" name="province" required>
+                        <select class="form-select" id="province" name="province" required>
                             <option selected disabled value="">Choose...</option>
 
                             @foreach ($provincias as $province)
@@ -62,7 +62,7 @@
                     <!--begin::Col-->
                     <div class="col-md-6">
                         <label for="validationCustom04" class="form-label">cidade</label>
-                        <select class="form-select" id="validationCustom04" name="cidade">
+                        <select class="form-select" id="cidade" name="cidade">
                             <option selected disabled value="">Choose...</option>
                             <option>...</option>
                         </select>
@@ -70,26 +70,113 @@
                     </div>
                     <!--end::Col-->
                     <!--begin::Col-->
-                    <div class="col-md-6">
-                        <label for="validationCustom05" class="form-label">Zip</label>
-                        <input type="text" class="form-control" id="validationCustom05" required />
-                        <div class="invalid-feedback">Please provide a valid zip.</div>
+                    <div class="col-md-3">
+                        <label for="validationCustom04" class="form-label">Sexo</label>
+                        <fieldset class="">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="sexo" id="sexo"
+                                    value="Masculino" checked />
+                                <label class="form-check-label" for="gridRadios1">
+                                    Masculino
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="sexo" id="sexo"
+                                    value="Feminino" />
+                                <label class="form-check-label" for="gridRadios2">
+                                    Feminino
+                                </label>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <!--end::Col-->
+
+
+                    <!--begin::Col-->
+                    <div class="col-md-3">
+                        <label for="validationCustom02" class="form-label">Data de Nascimento</label>
+                        <input type="Date" class="form-control" id="dataNascimento"
+                            placeholder="Selecione a Data" name="dataNascimento" required />
+                        <div class="valid-feedback">Looks good!</div>
+                    </div>
+                    <!--end::Col-->
+
+
+                    <!--begin::Col-->
+                    <div class="col-md-3">
+                        <label for="validationCustom04" class="form-label">Estado Civil</label>
+                        <fieldset class="">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="estado_civil" id="sexo"
+                                    value="Solteiro" checked />
+                                <label class="form-check-label" for="gridRadios1">
+                                    Solteiro/a
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="estado_civil" id="sexo"
+                                    value="Casado" />
+                                <label class="form-check-label" for="gridRadios2">
+                                    Casado/a
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="estado_civil" id="sexo"
+                                    value="Viuvo" />
+                                <label class="form-check-label" for="gridRadios2">
+                                    Viuvo/a
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="estado_civil" id="sexo"
+                                    value="Outro" />
+                                <label class="form-check-label" for="gridRadios2">
+                                    Outro
+                                </label>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <!--end::Col-->
+
+
+                    <!--begin::Col-->
+                    <div class="col-md-3">
+                        <label for="validationCustom02" class="form-label">Contacto</label>
+                        <input type="number" class="form-control" id="contacto"
+                            placeholder="Digite o contacto ex. 2588XXXXXXXX" name="contacto" required />
+                        <div class="valid-feedback">Looks good!</div>
                     </div>
                     <!--end::Col-->
                     <!--begin::Col-->
-                    <div class="col-12">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required />
-                            <label class="form-check-label" for="invalidCheck">
-                                Agree to terms and conditions
-                            </label>
-                            <div class="invalid-feedback">You must agree before submitting.</div>
-                        </div>
+                    <div class="col-md-3">
+                        <label for="validationCustom02" class="form-label">NIM</label>
+                        <input type="text" class="form-control" id="nim"
+                            placeholder="Digite o NIM de Cadastro" name="nim" required />
+                        <div class="valid-feedback">Obrigatorio!</div>
+                    </div>
+                    <!--end::Col-->
+
+                    <!--begin::Col-->
+                    <div class="col-md-3">
+                        <label for="validationCustom02" class="form-label">Numero de registro</label>
+                        <input type="text" class="form-control" id="NRegisto"
+                            placeholder="Digite o numero de registro" name="NRegisto" required />
+                        <div class="valid-feedback">Obrigatorio!</div>
+                    </div>
+                    <!--end::Col-->
+
+
+                    <!--begin::Col-->
+                    <div class="col-md-6">
+                        <label for="validationCustom02" class="form-label">Endereço</label>
+                        <input type="text" class="form-control" id="endereco"
+                            placeholder="Digite o endereco atual" name="endereco" required />
+                        <div class="valid-feedback">Obrigatorio!</div>
                     </div>
                     <!--end::Col-->
                 </div>
                 <!--end::Row-->
-            </form>
+
         </div>
         <!--end::Body-->
         <!--begin::Footer-->
@@ -129,4 +216,15 @@
 </div>
 
 @include('layouts.footer')
+
 <!--end::Footer-->
+<script>
+    $(document).ready(function() {
+        $("#province").change(function() {
+            let province_id = this.value;
+            $.get('/getCity?province=' + province_id, function(data) {
+                $("#cidade").html(data);
+            })
+        })
+    })
+</script>

@@ -16,10 +16,10 @@ return new class extends Migration
             $table->string('nome', 100);
             $table->string('apelido', 45);
             $table->string('sexo', 45)->nullable();
-            $table->date('data_nascimento')->nullable();
+            $table->dateTime('data_nascimento')->nullable();
             $table->string('estado_civil', 45)->nullable();
-            $table->string('tipo_doc', 45);
-            $table->string('num_doc', 45);
+            $table->string('tipo_doc', 45)->nullable();
+            $table->string('num_doc', 45)->nullable();
             $table->string('telefone', 9)->nullable();
             $table->string('email', 100)->nullable();
             $table->string('endereco', 45)->nullable();
@@ -29,6 +29,8 @@ return new class extends Migration
             $table->unsignedInteger('destrito_id')->nullable()->index('fk_cidadao_destrito1_idx');
             $table->unsignedInteger('documento_id')->nullable()->index('fk_cidadao_documento1_idx');
             $table->integer('cidade_id')->nullable()->index('fk_cidadao_cidade1_idx');
+            $table->string('NIM', 100)->nullable();
+            $table->string('num_registo', 45)->nullable();
         });
     }
 

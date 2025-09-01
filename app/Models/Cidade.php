@@ -32,10 +32,8 @@ class Cidade extends Model
 {
 	use SoftDeletes;
 	protected $table = 'cidade';
-	public $incrementing = false;
 
 	protected $casts = [
-		'id' => 'int',
 		'provincia_id' => 'int'
 	];
 

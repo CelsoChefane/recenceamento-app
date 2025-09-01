@@ -21,6 +21,7 @@ Route::middleware(['web','auth'
     Route::get('/cidadao/edit/{id}', [cidadaoController::class, 'edit'])->name('cidadao.edit');
     Route::get('/cidadao/update/{id}', [cidadaoController::class, 'update'])->name('cidadao.update');
     Route::get('/cidadao/destroy/{id}', [cidadaoController::class, 'destroy'])->name('cidadao.destroy');
+    Route::get('/cidadao/declaracao/{id}', [cidadaoController::class, 'declaracao'])->name('cidadao.declaracao');
     Route::get('/getCity', [cidadaoController::class, 'getCity'])->name('get_city');
 
 

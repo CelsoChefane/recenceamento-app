@@ -110,6 +110,18 @@ $formattedDate = $data->format('d/m/Y');
     public function show(string $id)
     {
         //
+        $cidadao = Cidadao::find($id);
+
+        return view('pages.cidadao.detail_cidadao', compact('cidadao'));
+    }
+
+
+    public function declaracao(string $id)
+    {
+        //
+        $cidadao = Cidadao::find($id);
+
+        return view('pages.PDFpages.declaracao_militar', compact('cidadao'));
     }
 
     /**
@@ -118,6 +130,7 @@ $formattedDate = $data->format('d/m/Y');
     public function edit(string $id)
     {
         //
+
     }
 
     /**

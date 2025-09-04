@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\cidadao;
 
-use App\Http\Controllers\Controller;
-use App\Models\Cidadao;
-use App\Models\Cidade;
-use App\Models\Provincium;
 use Carbon\Carbon;
+use App\Models\Cidade;
+use App\Models\Cidadao;
+use App\Models\Provincium;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class cidadaoController extends Controller
 {
@@ -76,10 +78,10 @@ class cidadaoController extends Controller
         $provincia = Provincium::find($request->province);
         $cidade = Cidade::find($request->cidade);
 
-$data = new Carbon($request->dataNascimento);
-$formattedDate = $data->format('d/m/Y');
+        $data = new Carbon($request->dataNascimento);
+        $formattedDate = $data->format('d/m/Y');
 
-// dd($formattedDate);
+        // dd($formattedDate);
         $table = new Cidadao();
         $table->nome = $request->nome;
         $table->apelido = $request->apelido;
@@ -120,8 +122,14 @@ $formattedDate = $data->format('d/m/Y');
     {
         //
         $cidadao = Cidadao::find($id);
+        $artigo = "artigo 45 da lei n 19/2023, de 29 de Dezembro (Lei do Serviço Militar)";
+        $user = Auth::user();
 
-        return view('pages.PDFpages.declaracao_militar', compact('cidadao'));
+        $data = compact('cidadao', 'artigo','user');
+        $pdf = Pdf::loadView('pages.PDFpages.declaracao_militar', $data);
+        return $pdf->stream('pages.PDFpages.declaracao_militar');
+
+        // return view('pages.PDFpages.declaracao_militar', compact('cidadao', 'artigo'));
     }
 
     /**

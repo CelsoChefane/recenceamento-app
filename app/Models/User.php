@@ -7,7 +7,9 @@
 namespace App\Models;
 
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -15,28 +17,8 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 
-/**
- * Class User
- *
- * @property int $id
- * @property string $name
- * @property string $email
- * @property Carbon|null $email_verified_at
- * @property string $password
- * @property string|null $two_factor_secret
- * @property string|null $two_factor_recovery_codes
- * @property Carbon|null $two_factor_confirmed_at
- * @property string|null $remember_token
- * @property int|null $current_team_id
- * @property string|null $profile_photo_path
- * @property Carbon|null $created_at
- * @property Carbon|null $updated_at
- *
- * @package App\Models
- */
 class User extends Authenticatable
 {
-
     use HasApiTokens;
 
     /** @use HasFactory<\Database\Factories\UserFactory> */
@@ -44,13 +26,14 @@ class User extends Authenticatable
     use HasProfilePhoto;
     use Notifiable;
     use TwoFactorAuthenticatable;
-
+	use SoftDeletes;
 	protected $table = 'users';
 
 	protected $casts = [
 		'email_verified_at' => 'datetime',
 		'two_factor_confirmed_at' => 'datetime',
-		'current_team_id' => 'int'
+		'current_team_id' => 'int',
+		'centro_recrutamento_id' => 'int'
 	];
 
 	protected $hidden = [
@@ -69,6 +52,19 @@ class User extends Authenticatable
 		'two_factor_confirmed_at',
 		'remember_token',
 		'current_team_id',
-		'profile_photo_path'
+		'profile_photo_path',
+		'centro_recrutamento_id'
 	];
+
+	public function centro_recrutamento()
+	{
+		return $this->belongsTo(CentroRecrutamento::class);
+	}
+
+	public function rules()
+	{
+		return $this->belongsToMany(Rule::class, 'users_has_rule', 'users_id')
+					->withPivot('id', 'description', 'deleted_at')
+					->withTimestamps();
+	}
 }

@@ -23,6 +23,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property int|null $provincia_id
  * 
  * @property Provincium|null $provincium
+ * @property Collection|CentroRecrutamento[] $centro_recrutamentos
  * @property Collection|Cidadao[] $cidadaos
  * @property Collection|UnidadeMilitar[] $unidade_militars
  *
@@ -46,6 +47,11 @@ class Cidade extends Model
 	public function provincium()
 	{
 		return $this->belongsTo(Provincium::class, 'provincia_id');
+	}
+
+	public function centro_recrutamentos()
+	{
+		return $this->hasMany(CentroRecrutamento::class);
 	}
 
 	public function cidadaos()
